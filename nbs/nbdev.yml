@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "quantumPhys"
+  site-url: "https://javierargu.github.io/quantumPhys"
+  description: "Quantum physics course"
+  repo-branch: main
+  repo-url: "https://github.com/javierargu/quantumPhys"
