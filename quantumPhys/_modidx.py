@@ -5,4 +5,4 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://javierargu.github.io',
                 'git_url': 'https://github.com/javierargu/quantumPhys',
                 'lib_path': 'quantumPhys'},
-  'syms': {'quantumPhys.core': {'quantumPhys.core.foo': ('intro.html#foo', 'quantumPhys/core.py')}}}
+  'syms': {'quantumPhys.core': {'quantumPhys.core.foo': ('core.html#foo', 'quantumPhys/core.py')}}}
