@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quantumPhys",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "quantumPhys",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall quantumPhys in Development mode\n# make sure quantumPhys package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to quantumPhys\n$ nbdev_prepare",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "quantumPhys",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/javierargu/quantumPhys.git\nor from conda\n$ conda install -c javierargu quantumPhys\nor from pypi\n$ pip install quantumPhys\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "quantumPhys",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "interactive.html",
+    "href": "interactive.html",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Note\n\n\n\nThis introduction has been adapted from Borja’s bibliography: references.bib PhD thesis [@requena2024].\n\n\n\n1 What is machine learning?\nWith the progress of technology, we encounter increasingly more complex and abstract problems that are hard to formalize mathematically. For instance, the problem of face recognition in images cannot be easily presented in a formal mathematical way, or tasks such as detecting new phases of matter may not even have a known mathematical formulation. Hence, these types of problems cannot be effectively addressed using standard hard-coded algorithms.\nThe field of machine learning (ML) emerges as a new paradigm to develop algorithms that are not explicitly programmed, but learned from experience instead, typically in the form of data. Figure 1 provides a visual comparison between traditional programming and ML. In traditional programming, an input task and a program to solve it yield the desired result after some computation. In ML, an input task and related data instances result in a program to solve the task. For example, the data can be pairs of problem examples and their solutions.\nThis process heavily relies on applied statistics, emphasizing the use of computers to approximate complex functions. Deep learning [@goodfellow:2016], a subfield of ML, is the maximum exponent of this trend. It employs parametrized hierarchical models to extract intricate patterns from data, achieving outstanding results across various tasks.\n\n\n\n\n\n\nFigure 1: Traditional programming vs machine learning\n\n\n\n\n\nCode\nimport plotly.graph_objects as go\nimport numpy as np\n\nimport plotly.io as pio\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\n\n# Create figure\nfig = go.Figure()\n\n# Add traces, one for each slider step\nfor step in np.arange(0, 5, 0.1):\n    fig.add_trace(\n        go.Scatter(\n            visible=False,\n            line=dict(color=\"#00CED1\", width=6),\n            name=\"𝜈 = \" + str(step),\n            x=np.arange(0, 10, 0.01),\n            y=np.sin(step * np.arange(0, 10, 0.01))))\n\n# Make 10th trace visible\nfig.data[10].visible = True\n\n# Create and add slider\nsteps = []\nfor i in range(len(fig.data)):\n    step = dict(\n        method=\"update\",\n        args=[{\"visible\": [False] * len(fig.data)},\n              {\"title\": \"Slider switched to step: \" + str(i)}],  # layout attribute\n    )\n    step[\"args\"][0][\"visible\"][i] = True  # Toggle i'th trace to \"visible\"\n    steps.append(step)\n\nsliders = [dict(\n    active=10,\n    currentvalue={\"prefix\": \"Frequency: \"},\n    pad={\"t\": 50},\n    steps=steps\n)]\n\nfig.update_layout(\n    sliders=sliders\n)\nfig.show()",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "introduction.html",
+    "href": "introduction.html",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Note\n\n\n\nThis introduction has been adapted from Borja’s bibliography: references.bib PhD thesis [@requena2024].",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#supervised-learning",
+    "href": "introduction.html#supervised-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.1 Supervised learning",
+    "text": "3.1 Supervised learning\nSupervised learning refers to ML algorithms that learn from labeled data \\(\\mathcal{D} = \\{(\\mathbf{x}_i,\\mathbf{y}_i)\\}\\). There exist various approaches to supervised learning, spanning from statistical methods to classical ML and deep learning. In most cases, substantial amounts of data are required for the training process, which entails the accurate labeling of the data. This is usually considered one of the most significant drawbacks of supervised learning, as obtaining perfectly matched labels is not always feasible or may require extensive manual annotation by humans.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#unsupervised-learning",
+    "href": "introduction.html#unsupervised-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.2 Unsupervised learning",
+    "text": "3.2 Unsupervised learning\nWhile labeled data may be scarce, we often have access to large amounts of raw unlabeled data \\(\\mathcal{D} = \\{\\mathbf{x}_i\\}\\). In this case, we can employ unsupervised learning, which refers to ML algorithms that learn from unlabeled data. Unsupervised learning can either be used for preliminary pre-processing steps, such as dimensionality reduction, or for representation learning, as in data clustering. Furthermore, it can be used to learn the underlying probability distribution of the data and generate entirely new examples.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#reinforcement-learning",
+    "href": "introduction.html#reinforcement-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.3 Reinforcement learning",
+    "text": "3.3 Reinforcement learning\nIn contrast to the two previous types of learning, some ML do not rely on a fixed data set \\(\\mathcal{D}\\). For instance, in reinforcement learning, we usually do not even have a data set at all from the beginning. Instead, the learning algorithm interacts with an environment in a feedback loop to accomplish a given task. The data set is gradually shaped as the learning system collects experiences derived from these interactions. Different reinforcement learning algorithms manage the collected data differently, although it is always leveraged to achieve the objective task.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Intro to quantum",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()",
+    "crumbs": [
+      "Intro to quantum"
+    ]
+  }
+]
