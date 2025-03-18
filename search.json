@@ -1,0 +1,192 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quantumPhys",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "quantumPhys",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall quantumPhys in Development mode\n# make sure quantumPhys package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to quantumPhys\n$ nbdev_prepare",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "quantumPhys",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/javierargu/quantumPhys.git\nor from conda\n$ conda install -c javierargu quantumPhys\nor from pypi\n$ pip install quantumPhys\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "quantumPhys",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "quantumPhys"
+    ]
+  },
+  {
+    "objectID": "interactive.html",
+    "href": "interactive.html",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Note\n\n\n\nThis introduction has been adapted from Borja’s bibliography: references.bib PhD thesis [@requena2024].\n\n\n\n1 What is machine learning?\nWith the progress of technology, we encounter increasingly more complex and abstract problems that are hard to formalize mathematically. For instance, the problem of face recognition in images cannot be easily presented in a formal mathematical way, or tasks such as detecting new phases of matter may not even have a known mathematical formulation. Hence, these types of problems cannot be effectively addressed using standard hard-coded algorithms.\nThe field of machine learning (ML) emerges as a new paradigm to develop algorithms that are not explicitly programmed, but learned from experience instead, typically in the form of data. Figure 1 provides a visual comparison between traditional programming and ML. In traditional programming, an input task and a program to solve it yield the desired result after some computation. In ML, an input task and related data instances result in a program to solve the task. For example, the data can be pairs of problem examples and their solutions.\nThis process heavily relies on applied statistics, emphasizing the use of computers to approximate complex functions. Deep learning [@goodfellow:2016], a subfield of ML, is the maximum exponent of this trend. It employs parametrized hierarchical models to extract intricate patterns from data, achieving outstanding results across various tasks.\n\n\n\n\n\n\nFigure 1: Traditional programming vs machine learning\n\n\n\n\n\nCode\nimport plotly.graph_objects as go\nimport numpy as np\n\nimport plotly.io as pio\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\n\n# Create figure\nfig = go.Figure()\n\n# Add traces, one for each slider step\nfor step in np.arange(0, 5, 0.1):\n    fig.add_trace(\n        go.Scatter(\n            visible=False,\n            line=dict(color=\"#00CED1\", width=6),\n            name=\"𝜈 = \" + str(step),\n            x=np.arange(0, 10, 0.01),\n            y=np.sin(step * np.arange(0, 10, 0.01))))\n\n# Make 10th trace visible\nfig.data[10].visible = True\n\n# Create and add slider\nsteps = []\nfor i in range(len(fig.data)):\n    step = dict(\n        method=\"update\",\n        args=[{\"visible\": [False] * len(fig.data)},\n              {\"title\": \"Slider switched to step: \" + str(i)}],  # layout attribute\n    )\n    step[\"args\"][0][\"visible\"][i] = True  # Toggle i'th trace to \"visible\"\n    steps.append(step)\n\nsliders = [dict(\n    active=10,\n    currentvalue={\"prefix\": \"Frequency: \"},\n    pad={\"t\": 50},\n    steps=steps\n)]\n\nfig.update_layout(\n    sliders=sliders\n)\nfig.show()",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html",
+    "href": "introduction.html",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Note\n\n\n\nThis introduction has been adapted from Borja’s bibliography: references.bib PhD thesis [@requena2024].",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#supervised-learning",
+    "href": "introduction.html#supervised-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.1 Supervised learning",
+    "text": "3.1 Supervised learning\nSupervised learning refers to ML algorithms that learn from labeled data \\(\\mathcal{D} = \\{(\\mathbf{x}_i,\\mathbf{y}_i)\\}\\). There exist various approaches to supervised learning, spanning from statistical methods to classical ML and deep learning. In most cases, substantial amounts of data are required for the training process, which entails the accurate labeling of the data. This is usually considered one of the most significant drawbacks of supervised learning, as obtaining perfectly matched labels is not always feasible or may require extensive manual annotation by humans.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#unsupervised-learning",
+    "href": "introduction.html#unsupervised-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.2 Unsupervised learning",
+    "text": "3.2 Unsupervised learning\nWhile labeled data may be scarce, we often have access to large amounts of raw unlabeled data \\(\\mathcal{D} = \\{\\mathbf{x}_i\\}\\). In this case, we can employ unsupervised learning, which refers to ML algorithms that learn from unlabeled data. Unsupervised learning can either be used for preliminary pre-processing steps, such as dimensionality reduction, or for representation learning, as in data clustering. Furthermore, it can be used to learn the underlying probability distribution of the data and generate entirely new examples.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "introduction.html#reinforcement-learning",
+    "href": "introduction.html#reinforcement-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "3.3 Reinforcement learning",
+    "text": "3.3 Reinforcement learning\nIn contrast to the two previous types of learning, some ML do not rely on a fixed data set \\(\\mathcal{D}\\). For instance, in reinforcement learning, we usually do not even have a data set at all from the beginning. Instead, the learning algorithm interacts with an environment in a feedback loop to accomplish a given task. The data set is gradually shaped as the learning system collects experiences derived from these interactions. Different reinforcement learning algorithms manage the collected data differently, although it is always leveraged to achieve the objective task.",
+    "crumbs": [
+      "Introduction to Machine Learning"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Intro to quantum",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()",
+    "crumbs": [
+      "Intro to quantum"
+    ]
+  },
+  {
+    "objectID": "tema1.html",
+    "href": "tema1.html",
+    "title": "Introduction to Quantum Physics",
+    "section": "",
+    "text": "Code\nimport numpy as np\nimport plotly.graph_objects as go\nimport plotly.io as pio\n\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\n# Create figure\nfig = go.Figure()\n\n# Define the Bloch sphere\nu = np.linspace(0, 2 * np.pi, 100)\nv = np.linspace(0, np.pi, 100)\nx = np.outer(np.cos(u), np.sin(v))\ny = np.outer(np.sin(u), np.sin(v))\nz = np.outer(np.ones(np.size(u)), np.cos(v))\nuc = np.outer(u, np.ones(np.size(v)))\nvc = np.outer(np.ones(np.size(u)), v)\n\nfig.add_trace(go.Surface(x=x, y=y, z=z, opacity=0.5, colorscale='Blues', showscale=False, customdata=customdata, hovertemplate=hovertemplate))\n\n# Define the main quantum states\nstates = {\n    '|0⟩': (0, 0, 1),\n    '|1⟩': (0, 0, -1),\n    '|+⟩': (1, 0, 0),\n    '|−⟩': (-1, 0, 0),\n    '|R⟩': (0, 1, 0),\n    '|L⟩': (0, -1, 0)\n}\n\n# Add markers for the main quantum states\nfor state, coords in states.items():\n    fig.add_trace(go.Scatter3d(\n        x=[coords[0]], y=[coords[1]], z=[coords[2]],\n        mode='markers+text',\n        marker=dict(size=5, color='red'),\n        text=[state],\n        textposition='top center'\n    ))\n\nfig.show()",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#historical-introduction",
+    "href": "tema1.html#historical-introduction",
+    "title": "Introduction to Quantum Physics",
+    "section": "1.1 1.1 Historical Introduction",
+    "text": "1.1 1.1 Historical Introduction\nAt the dawn of the 20th century, the field of physics was considered nearly complete. This era was marked by significant advancements in various branches of physics, including Rational Mechanics, Thermodynamics, Electromagnetism, Fluid Mechanics, and Optics. These disciplines collectively provided a comprehensive understanding of the physical phenomena observed in nature. The prevailing belief was thus that all fundamental principles governing the natural world had been discovered.\nHowever, despite the remarkable progress, there were two unresolved issues that cast a shadow over the otherwise clear understanding of classical physics. Lord Kelvin famously referred to these issues as “two clouds on the horizon.” The first cloud was the Michelson-Morley experiment, which failed to detect the expected motion of the Earth as the speed of light was found to be constant in all directions. This lead to the development of the Theory of Relativity by Albert Einstein. The second cloud was the problem of blackbody radiation, which classical physics could not adequately explain. This problem eventually led to the birth of Quantum Physics, with significant contributions from Max Planck, Albert Einstein, Niels Bohr, Erwin Schrödinger, Werner Heisenberg, Paul Dirac, Wolfgang Pauli, and Richard Feynman, among others.\nThe resolution of these two issues marked the beginning of Modern Physics, characterized by the development of the Theory of Relativity and Quantum Physics. These two pillars of modern physics revolutionized the understanding of our universe, providing new insights into the nature of space, time, and matter. The Theory of Relativity, with its concepts of spacetime and the equivalence of mass and energy, explained gravity and the large-scale structure of the universe. Quantum Physics, on the other hand, revealed the discrete and probabilistic nature of the microscopic world, fundamentally altering our conception of particles and waves.\nRichard Feynman, one of the most influential physicists of the 20th century, famously remarked, “I think I can safely say that nobody understands quantum mechanics.” This statement underscores the counterintuitive and often perplexing nature of quantum phenomena, which continue to challenge our classical intuitions. Despite its complexity, over the last century, quantum mechanics has proven to be an extraordinarily successful theory, providing accurate predictions and leading to numerous technological advancements that include semiconductors, lasers, and quantum computing.",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#black-body-radiation-problem",
+    "href": "tema1.html#black-body-radiation-problem",
+    "title": "Introduction to Quantum Physics",
+    "section": "1.2 1.2 Black Body Radiation Problem",
+    "text": "1.2 1.2 Black Body Radiation Problem\nA black body is an idealized physical object that absorbs all incident electromagnetic radiation, regardless of its frequency or angle of incidence. This concept is crucial in the study of thermal radiation and quantum mechanics. When a black body is in thermal equilibrium, it emits radiation with a characteristic spectrum that depends solely on its temperature, a phenomenon described by Wien’s Law. This law states that the wavelength at which the emission of a black body spectrum is maximized is inversely proportional to the temperature of the black body.\nHowever, classical physics faced a significant challenge with the black body radiation problem, often referred to as the “Ultraviolet Catastrophe.” According to classical theories, such as Rayleigh-Jeans law, the energy radiated at ultraviolet frequencies would be infinite, which clearly contradicted experimental observations. This discrepancy highlighted the limitations of classical physics in explaining phenomena at atomic and subatomic levels.\nThe resolution to this problem came from the German scientist Max Planck. He proposed that electromagnetic waves could be considered as quantized stationary waves. Planck introduced the idea that the energy of these waves is quantized and can be expressed as \\(E = h\\nu\\), where $E $ is the energy, \\(h\\) is Planck’s constant (\\(6.626 \\times 10^{-34}\\) J·s), and \\(\\nu\\) is the frequency of the radiation. This revolutionary concept laid the foundation for quantum theory, fundamentally altering our understanding of energy and matter interactions at microscopic scales. Planck’s radiation formula successfully explained the observed black body spectrum, resolving the ultraviolet catastrophe and marking the birth of quantum mechanics.\n\n\nCode\nimport numpy as np\nimport pandas as pd\nimport plotly.express as px\nimport plotly.graph_objects as go\nimport plotly.io as pio\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\n\n# Create figure\nfig = go.Figure()\n\nwavelength = np.linspace(0.1, 3, 100)\ntemperatures = [3000, 4000, 5000]  # Kelvin\ncvel = 3e8  # m/s\nkB=1.38e-23  # J/K\nhh=6.626e-34  # J.s\ndata = []\nfor T in temperatures:\n    intensity = (2*hh * cvel**2 / ((wavelength * 1e-6)**5 * (np.exp(hh* cvel / ((wavelength * 1e-6) * kB* T)) - 1)))\n    # intensity = 2*cvel*kB*T / (wavelength* 1e-6 )**4\n    df = pd.DataFrame({'Wavelength (μm)': wavelength, 'Radiation': intensity, 'Temperature': [T]*len(wavelength)})\n    data.append(df)\ndf_all = pd.concat(data)\nfig = px.line(df_all, x='Wavelength (μm)', y='Radiation', color='Temperature', title='Blackbody Radiation Curves')\nfig.show()",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#photoelectric-effect",
+    "href": "tema1.html#photoelectric-effect",
+    "title": "Introduction to Quantum Physics",
+    "section": "2.1 1.3 Photoelectric Effect",
+    "text": "2.1 1.3 Photoelectric Effect\nAnother experimental observation that supported the quantized nature of light was the photoelectric effect. This is a phenomenon in which electrons are emitted from a material when it is exposed to light, and several results did not agree with a classical interpretation of this photoelectric effect:\n\nImmediate Emission of Electrons: When light shines on a material, electrons are emitted almost instantaneously. This observation contradicts the classical wave theory of light, which would predict a time delay as the electrons accumulate enough energy to escape the material.\nIntensity and Electron Count: Increasing the intensity of the incident light increases the number of emitted electrons but does not affect their energy. This result is inconsistent with the classical wave theory, which would suggest that higher intensity (more energy) should increase the energy of the emitted electrons.\nThreshold Frequency: Light below a certain frequency, regardless of its intensity, does not eject electrons from the material. For example, red light, even at high intensities, fails to emit electrons, while weak violet light, which has a higher frequency, can eject electrons with significant energy. This threshold frequency is specific to the material and indicates that the energy of the incident photons must be above a certain value to overcome the work function of the material.\nEnergy of Emitted Electrons: The energy of the emitted electrons depends on the frequency of the incident light, not its intensity. Weak violet light can eject fewer electrons, but those electrons have higher energy compared to those emitted by more intense red light.\n\nAlbert Einstein provided a theoretical explanation for these observations by proposing that light consists of discrete packets of energy called photons. According to Einstein, each photon has an energy \\(E = h\\nu\\), where \\(h\\) is Planck’s constant and \\(\\nu\\) is the frequency of the light. When a photon strikes an electron in the material, it transfers its energy to the electron. If the photon’s energy exceeds the work function \\(\\phi\\) of the material, the electron is emitted with a kinetic energy given by the photoelectric equation:\n\\(KE_{max} = h\\nu - \\phi\\)\nHere, $ KE_{max} $ is the maximum kinetic energy of the emitted electrons, $ h $ is Planck’s constant, \\(\\nu\\) is the frequency of the incident light, and \\(\\phi\\) is the work function of the material. This equation elegantly explains the experimental results and underscores the quantum nature of light, marking a significant departure from classical physics.",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#wave-particle-duality",
+    "href": "tema1.html#wave-particle-duality",
+    "title": "Introduction to Quantum Physics",
+    "section": "3.1 1.4 Wave-Particle Duality",
+    "text": "3.1 1.4 Wave-Particle Duality\nWave-particle duality is a fundamental concept in quantum mechanics that describes how light and matter exhibit both wave-like and particle-like properties. This duality is one of the cornerstones of quantum theory and has profound implications for our understanding of the nature of reality.\nOne of the most famous experiments demonstrating wave-particle duality is Young’s double-slit experiment. In this experiment, a beam of light is directed at a barrier with two closely spaced slits. When the light passes through the slits, it creates an interference pattern on a screen behind the barrier, which is characteristic of wave behavior. The pattern consists of alternating bright and dark fringes, indicating constructive and destructive interference of the light waves. However, when the experiment is conducted with individual photons or particles, the interference pattern still emerges, but only when the particles are not observed. When detectors are placed at the slits to determine through which slit each particle passes, the interference pattern disappears, and the particles behave as if they are classical particles, hitting the screen in two distinct bands. This experiment highlights the dual nature of light and matter, behaving as waves in the absence of measurement and as particles when observed.\nThe wave-particle duality of matter was further extended by Louis de Broglie, who proposed that particles such as electrons also exhibit wave-like properties. According to de Broglie’s hypothesis, the wavelength $ $ of a particle is inversely proportional to its momentum $ p $, given by the equation $ = $, where $ h $ is Planck’s constant. This idea was experimentally confirmed by the observation of electron diffraction patterns, similar to those produced by light waves, when electrons were passed through a crystal lattice.\nWave-particle duality is closely related to Heisenberg’s Uncertainty Principle, which states that certain pairs of physical properties, such as position $ x $ and momentum $ p $, cannot be simultaneously measured with arbitrary precision. The uncertainty principle is mathematically expressed as $ x p $, where $ x $ and $ p $ are the uncertainties in position and momentum, respectively, and $ $ is the reduced Planck’s constant. This principle implies that the more precisely one property is measured, the less precisely the other can be known. The uncertainty principle is a direct consequence of the wave-like nature of particles, as the wave properties impose fundamental limits on the precision of simultaneous measurements of conjugate variables.\nWave-particle duality and the uncertainty principle are central to the quantum mechanical description of nature, challenging classical intuitions and providing a deeper understanding of the behavior of light and matter at microscopic scales. These concepts have led to the development of various quantum technologies, including electron microscopy, quantum cryptography, and quantum computing, which exploit the unique properties of quantum systems.",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#quantum-tunneling",
+    "href": "tema1.html#quantum-tunneling",
+    "title": "Introduction to Quantum Physics",
+    "section": "7.1 1.9 Quantum Tunneling",
+    "text": "7.1 1.9 Quantum Tunneling\nQuantum tunneling is a quantum mechanical phenomenon where a particle can pass through a potential barrier that it classically shouldn’t be able to surmount. This effect arises due to the wave-like nature of particles in quantum mechanics, as described by the Schrödinger equation. When a particle encounters a potential barrier, there is a non-zero probability that it will tunnel through the barrier, even if its energy is less than the height of the barrier. This phenomenon cannot be explained by classical physics, which dictates that a particle must have sufficient energy to overcome a barrier. Quantum tunneling is a direct consequence of the probabilistic nature of quantum mechanics and the principle of superposition, which allows particles to exist in multiple states simultaneously.\nOne of the most well-known examples of quantum tunneling is electron tunneling in semiconductors. In semiconductor devices such as tunnel diodes and transistors, electrons can tunnel through thin insulating barriers, allowing for the flow of current even when classical physics would predict no conduction. This tunneling effect is crucial for the operation of many modern electronic devices, enabling the miniaturization and increased performance of integrated circuits. The ability of electrons to tunnel through barriers also plays a significant role in the behavior of superconductors, where Cooper pairs of electrons can tunnel through insulating layers between superconducting materials, leading to phenomena such as the Josephson effect.\nQuantum tunneling is also the basis for the operation of scanning tunneling microscopes (STMs), which are powerful tools for imaging surfaces at the atomic level. In an STM, a sharp metal tip is brought very close to the surface of a conductive sample. When a voltage is applied between the tip and the sample, electrons can tunnel through the vacuum gap, creating a measurable tunneling current. By scanning the tip across the surface and measuring the tunneling current, researchers can obtain detailed images of the surface’s atomic structure. This technique has provided a unique access to the nanoscopic world, allowing for the direct observation and manipulation of individual atoms and molecules.",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#quantum-entanglement",
+    "href": "tema1.html#quantum-entanglement",
+    "title": "Introduction to Quantum Physics",
+    "section": "8.1 2. Quantum Entanglement",
+    "text": "8.1 2. Quantum Entanglement\n\nTwo particles can become linked regardless of distance.\nMeasurement on one affects the other instantly.\nBasis for quantum communication and cryptography.",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  },
+  {
+    "objectID": "tema1.html#quantum-computing",
+    "href": "tema1.html#quantum-computing",
+    "title": "Introduction to Quantum Physics",
+    "section": "9.1 3. Quantum Computing",
+    "text": "9.1 3. Quantum Computing\n\nQubits instead of classical bits.\nSuperposition and entanglement enable parallel computation.\nPotential applications in cryptography, optimization, and simulation.\n\n\n\n\n\n\n\nNote\n\n\n\nThis introduction has been adapted from Borja’s bibliography: references.bib PhD thesis [@requena2024].",
+    "crumbs": [
+      "Introduction to Quantum Physics"
+    ]
+  }
+]
